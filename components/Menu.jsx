@@ -22,7 +22,7 @@ const Menu = ({ showCatMenu, setShowCatMenu }) => {
                                     {subMenuData.map((submenu) => (
                                         <Link
                                             key={submenu.id}
-                                            href="/"
+                                            href={submenu.url}
                                             onClick={() =>
                                                 setShowCatMenu(false)
                                             }

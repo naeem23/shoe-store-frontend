@@ -6,8 +6,18 @@ export const menuData = [
 ];
 
 export const subMenuData = [
-    { id: 1, name: 'Jordan', doc_count: 11 },
-    { id: 2, name: 'Sneakers', doc_count: 8 },
-    { id: 3, name: 'Running shoes', doc_count: 64 },
-    { id: 4, name: 'Football shoes', doc_count: 107 },
+    { id: 1, name: 'Jordan', doc_count: 11, url: '/category/jordan' },
+    { id: 2, name: 'Sneakers', doc_count: 8, url: '/category/sneakers' },
+    {
+        id: 3,
+        name: 'Running shoes',
+        doc_count: 64,
+        url: '/category/running-shoes',
+    },
+    {
+        id: 4,
+        name: 'Football shoes',
+        doc_count: 107,
+        url: '/category/football-shoes',
+    },
 ];
