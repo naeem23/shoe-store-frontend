@@ -7,6 +7,7 @@ import HeroBanner from './HeroBanner';
 import ProductCard from './ProductCard';
 import ProductImageCarousel from './ProductImageCarousel';
 import RelatedProducts from './RelatedProducts';
+import CartItems from './CartItems';
 
 export {
     Header,
@@ -18,4 +19,5 @@ export {
     ProductCard,
     ProductImageCarousel,
     RelatedProducts,
+    CartItems,
 };
