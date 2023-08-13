@@ -1,7 +1,9 @@
 import { HeroBanner, ProductCard, Wrapper } from '@/components';
-import Image from 'next/image';
+import { fetchDataFromApi } from '@/utils';
 
-export default function Home() {
+export default async function Home() {
+    const products = await fetchDataFromApi('/api/products?populate=*');
+
     return (
         <main>
             <HeroBanner />
@@ -22,14 +24,9 @@ export default function Home() {
 
                 {/* product card list */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {products?.data?.map((product) => (
+                        <ProductCard key={product?.id} data={product} />
+                    ))}
                 </div>
                 {/* product card list end */}
             </Wrapper>
