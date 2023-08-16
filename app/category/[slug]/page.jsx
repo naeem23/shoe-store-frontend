@@ -1,28 +1,32 @@
 import { ProductCard, Wrapper } from '@/components';
+import { fetchDataFromApi } from '@/utils';
 import React from 'react';
 
-const Category = () => {
+const Category = async ({ params }) => {
+    const { data: category } = await fetchDataFromApi(
+        `/api/categories?filters[slug][$eqi]=${params.slug}`
+    );
+
+    const { data: products } = await fetchDataFromApi(
+        `/api/products?populate=thumbnail&filters[categories][slug][$eqi]=${params.slug}`
+    );
+
     return (
         <div className="w-full md:py-20">
             <Wrapper>
                 {/* heading and paragraph */}
                 <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
                     <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-                        Running Shoes
+                        {category[0]?.attributes?.name}
                     </div>
                 </div>
                 {/* heading and paragraph end */}
 
                 {/* product card list */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {products.map((product) => (
+                        <ProductCard key={product.id} data={product} />
+                    ))}
                 </div>
                 {/* product card list end */}
             </Wrapper>

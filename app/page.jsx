@@ -2,7 +2,7 @@ import { HeroBanner, ProductCard, Wrapper } from '@/components';
 import { fetchDataFromApi } from '@/utils';
 
 export default async function Home() {
-    const products = await fetchDataFromApi('/api/products?populate=*');
+    const products = await fetchDataFromApi('/api/products?populate=thumbnail');
 
     return (
         <main>
