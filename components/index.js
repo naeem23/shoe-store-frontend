@@ -8,6 +8,7 @@ import ProductCard from './ProductCard';
 import ProductImageCarousel from './ProductImageCarousel';
 import RelatedProducts from './RelatedProducts';
 import CartItems from './CartItems';
+import LoadMore from './LoadMore';
 
 export {
     Header,
@@ -20,4 +21,5 @@ export {
     ProductImageCarousel,
     RelatedProducts,
     CartItems,
+    LoadMore,
 };
