@@ -7,7 +7,7 @@ import HeroBanner from './HeroBanner';
 import ProductCard from './ProductCard';
 import ProductImageCarousel from './ProductImageCarousel';
 import RelatedProducts from './RelatedProducts';
-import CartItems from './CartItems';
+import CartItem from './CartItem';
 import LoadMore from './LoadMore';
 import SizeAndCheckout from './SizeAndCheckout';
 
@@ -21,7 +21,7 @@ export {
     ProductCard,
     ProductImageCarousel,
     RelatedProducts,
-    CartItems,
+    CartItem,
     LoadMore,
     SizeAndCheckout,
 };
