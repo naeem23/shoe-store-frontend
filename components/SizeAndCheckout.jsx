@@ -1,10 +1,28 @@
 'use client';
 import { useState } from 'react';
 import { IoMdHeartEmpty } from 'react-icons/io';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/redux/slices/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const SizeAndCheckout = ({ size }) => {
+const SizeAndCheckout = ({ product, id }) => {
     const [selectedSize, setSelectedSize] = useState('');
     const [showError, setShowError] = useState(false);
+    const dispatch = useDispatch();
+
+    const notify = () => {
+        toast.success('Success, check your cart!', {
+            position: 'bottom-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+        });
+    };
 
     const handleAddToCart = () => {
         if (!selectedSize) {
@@ -13,6 +31,16 @@ const SizeAndCheckout = ({ size }) => {
                 block: 'center',
                 behavior: 'smooth',
             });
+        } else {
+            dispatch(
+                addToCart({
+                    id,
+                    ...product,
+                    pricePerUnit: product.price,
+                    selectedSize,
+                })
+            );
+            notify();
         }
     };
 
@@ -30,7 +58,7 @@ const SizeAndCheckout = ({ size }) => {
 
                 {/* sizes */}
                 <div id="sizeGrid" className="grid grid-cols-3 gap-2">
-                    {size?.map((item, i) => (
+                    {product?.size?.data?.map((item, i) => (
                         <div
                             key={i}
                             className={`border rounded-md text-center py-3 font-medium ${
@@ -74,6 +102,7 @@ const SizeAndCheckout = ({ size }) => {
                 Wishlist
                 <IoMdHeartEmpty size={20} />
             </button>
+            <ToastContainer />
         </>
     );
 };

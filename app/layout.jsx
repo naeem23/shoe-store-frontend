@@ -1,4 +1,5 @@
 import { Footer, Header } from '@/components';
+import { Providers } from '@/redux/provider';
 import './globals.css';
 
 export const metadata = {
@@ -10,9 +11,11 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <Header />
-                {children}
-                <Footer />
+                <Providers>
+                    <Header />
+                    {children}
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );

@@ -30,7 +30,7 @@ const ProductDetails = async ({ params }) => {
                     {/* right column */}
                     <div className="flex-[1] py-3">
                         {/* product title */}
-                        <div className="text-[34px] font-semibold mb-2">
+                        <div className="text-[34px] font-semibold mb-2 leading-tight">
                             {product.name}
                         </div>
 
@@ -66,7 +66,7 @@ const ProductDetails = async ({ params }) => {
                             (Also includes all applicable duties)
                         </div>
 
-                        <SizeAndCheckout size={product?.size?.data} />
+                        <SizeAndCheckout product={product} id={data?.[0]?.id} />
 
                         {/* product details */}
                         <div>
