@@ -22,3 +22,17 @@ export const getDiscountPercentage = (originalPrice, discountPrice) => {
     const percentage = (discount / originalPrice) * 100;
     return percentage.toFixed(2);
 };
+
+export const makePaymentRequest = async (endpoint, payload) => {
+    const res = await fetch(`${STRAPI_API_URL}${endpoint}`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+    return data;
+};
